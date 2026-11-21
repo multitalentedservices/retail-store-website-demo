@@ -1,0 +1,143 @@
+PASS  18 products
+PASS  5 categories
+PASS  every product in a real category
+PASS  every category has >=3 products
+PASS  product ids unique
+PASS  all prices positive integers
+PASS  all stock counts integers >= 0
+PASS  4 featured products
+PASS  4 fictional reviews
+PASS  threshold is 5
+PASS  stock 0 -> out
+PASS  stock 1 -> low
+PASS  stock 5 (== threshold) -> low
+PASS  stock 6 (threshold+1) -> in
+PASS  exactly one product sits AT the threshold
+PASS  at-threshold product is Vitamin D3 (id 3)
+PASS  one product out of stock (Omega-3, id 4)
+PASS  low-stock label names the count
+PASS  qty == stock passes (5 of 5)
+PASS  qty == stock+1 rejected (6 of 5)
+PASS  rejection names the stock count
+PASS  qty 0 rejected
+PASS  qty 1 of 1 passes
+PASS  qty 2 of 1 rejected
+PASS  no filters -> 18
+PASS  cat vitamins -> 4
+PASS  cat personal -> 4
+PASS  cat firstaid -> 3
+PASS  cat baby -> 3
+PASS  cat devices -> 4
+PASS  in-stock only -> 17
+PASS  search "vitamin" -> 4 (3 names + Omega-3 via category name)
+PASS  search "baby" -> 3
+PASS  search "zzz" -> 0 (empty state)
+PASS  cat vitamins + in-stock -> 3
+PASS  search "vitamin" + cat personal -> 0
+PASS  price-asc first is Bandages PKR 180
+PASS  price-asc last is BP Monitor PKR 4250
+PASS  price-desc first is BP Monitor
+PASS  name-asc first is Adhesive Bandages
+PASS  price-asc is monotonic
+PASS  formatPKR 4250
+PASS  formatPKR 850
+PASS  flow total 2x990 + 1x650 = 2630
+PASS  empty basket total 0
+PASS  single item total
+PASS  name "Ahmed Raza" ok
+PASS  name "Al" rejected (too short)
+PASS  name blank rejected
+PASS  name error names the rule
+PASS  phone 03215550142 ok
+PASS  phone normalised
+PASS  phone intl
+PASS  phone +92 form ok
+PASS  phone +92 normalised to 03 form
+PASS  phone "123" rejected
+PASS  phone error names 03 + 11 digits
+PASS  landline 042 rejected
+PASS  10-digit mobile rejected
+PASS  ref matches RS-DEMO-####
+PASS  ref deterministic
+PASS  different basket -> different ref
+PASS  decrement: 5 -> 3 after reserving 2
+PASS  state at 3 is low
+PASS  restore round-trip returns to 5
+PASS  demo clock is Sunday
+PASS  demo clock Sun 11:30 AM -> open
+PASS  open label names Sunday close 2:00 PM
+PASS  Sun 8:59 AM (before open) -> closed
+PASS  Sun 9:00 AM (exactly open) -> open
+PASS  Sun 1:59 PM -> open
+PASS  Sun 2:00 PM (exactly close) -> closed
+PASS  Mon 9:59 PM -> open
+PASS  Mon 10:00 PM (exactly close) -> closed
+PASS  fmtTime 14:00
+PASS  fmtTime 8:00
+PASS  wa link targets demo number
+PASS  wa link prefilled with product name
+PASS  contrast ink #17233B on white = 15.67:1
+PASS  contrast muted #44597A on white = 7.10:1
+PASS  contrast muted #44597A on surface-2 #F7F9FC = 6.74:1
+PASS  contrast blue #1D4ED8 on white (links/buttons text) = 6.70:1
+PASS  contrast white on blue #1D4ED8 (primary btn) = 6.70:1
+PASS  contrast white on blue-dark #1E3A8A (banner) = 10.36:1
+PASS  contrast blue-dark #1E3A8A on white (card cat) = 10.36:1
+PASS  contrast blue-dark on blue-soft #DBEAFE (nav current / today row) = 8.49:1
+PASS  contrast ok #166534 on ok-bg #DCFCE7 (in-stock badge) = 6.49:1
+PASS  contrast warn #92400E on warn-bg #FEF3C7 (low-stock badge / notice) = 6.37:1
+PASS  contrast out #991B1B on out-bg #FEE2E2 (out badge / closed chip) = 6.80:1
+PASS  contrast error #B91C1C on white (field errors) = 6.47:1
+PASS  contrast error #B91C1C on surface-2 #F7F9FC = 6.13:1
+PASS  contrast ink on surface #EEF2F7 (map placeholder) = 13.94:1
+PASS  contrast muted on surface #EEF2F7 = 6.32:1
+PASS  contrast white on ink #17233B (toast) = 15.67:1
+PASS  contrast focus outline blue #1D4ED8 vs white >= 3:1 = 6.70:1
+PASS  index.html carries DEMO labelling
+PASS  index.html has unique title
+PASS  index.html loads logic.js + app.js
+PASS  catalogue.html carries DEMO labelling
+PASS  catalogue.html has unique title
+PASS  catalogue.html loads logic.js + app.js
+PASS  product.html carries DEMO labelling
+PASS  product.html has unique title
+PASS  product.html loads logic.js + app.js
+PASS  reserve.html carries DEMO labelling
+PASS  reserve.html has unique title
+PASS  reserve.html loads logic.js + app.js
+PASS  reservations.html carries DEMO labelling
+PASS  reservations.html has unique title
+PASS  reservations.html loads logic.js + app.js
+PASS  store.html carries DEMO labelling
+PASS  store.html has unique title
+PASS  store.html loads logic.js + app.js
+PASS  all page titles unique
+PASS  prescription honesty line present in logic data
+PASS  pay-at-pickup line present
+PASS  store page labels the map a static placeholder
+PASS  NO external map embeds anywhere
+PASS  NO expiry / FEFO wording anywhere (banned claim)
+PASS  no medical-claim wording "cures"
+PASS  no medical-claim wording "cure"
+PASS  no medical-claim wording "treats"
+PASS  no medical-claim wording "treatment for"
+PASS  no medical-claim wording "heals"
+PASS  no medical-claim wording "guaranteed relief"
+PASS  no medical-claim wording "miracle"
+PASS  no lorem ipsum
+PASS  no live analytics endpoints
+PASS  no external scripts besides Google Fonts CSS
+PASS  link integrity: all local targets exist
+PASS  code weight < 400 KB (72020 B)
+PASS  image cat-baby.jpg <= 120 KB (61180 B)
+PASS  image cat-devices.jpg <= 120 KB (70594 B)
+PASS  image cat-firstaid.jpg <= 120 KB (73017 B)
+PASS  image cat-personal.jpg <= 120 KB (63791 B)
+PASS  image cat-vitamins.jpg <= 120 KB (79371 B)
+PASS  image hero.jpg <= 120 KB (102202 B)
+PASS  image storefront.jpg <= 120 KB (104585 B)
+PASS  media total <= 1.6 MB (554740 B)
+PASS  7 photos on disk
+PASS  every product category has an image file
+
+TOTAL: 141 PASS / 0 FAIL

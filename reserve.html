@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserve for Pickup — Sehat Bazaar Pharmacy (Demo)</title>
+<meta name="description" content="Demo pickup-reservation basket: adjust quantities within shelf stock, add your name, Pakistani mobile number and pickup time, and confirm. Pay at pickup — this demo takes no payment.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="demo-banner">DEMO WEBSITE — fictional store, products, prices and reviews. Built by MTS for BalanceBit Solutions.</div>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="index.html">Sehat <span>Bazaar</span><small>Pharmacy · Gujranwala · Demo</small></a>
+    <span class="open-chip" data-open-state>Open now</span>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="reserve.html" aria-current="page">Reserve for pickup<span class="basket-pill" data-basket-count>0</span></a>
+      <a href="reservations.html">My Reservations</a>
+      <a href="store.html">Our Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap section" data-reserve-page>
+  <h1>Reserve for pickup</h1>
+  <p>Your basket is held against the live shelf count: quantities can never go above the stock in store, and confirming a reservation takes those items off the shelf count until you collect or cancel. <strong>Pay at pickup — this demo takes no payment.</strong></p>
+
+  <div data-confirm hidden></div>
+
+  <p class="empty" data-basket-empty>Your pickup basket is empty. <a href="catalogue.html">Browse the catalogue</a> and tap “Reserve for pickup” on any in-stock product.</p>
+
+  <ul class="basket-list" data-basket-list></ul>
+  <p class="field-error" data-basket-error role="alert" hidden></p>
+  <div class="total-row" data-total-row><span>Basket total (pay at pickup)</span><span data-basket-total>PKR 0</span></div>
+
+  <form class="res-form" data-res-form novalidate>
+    <div class="field">
+      <label for="res-name">Your full name</label>
+      <input type="text" id="res-name" autocomplete="name" placeholder="e.g. Ahmed Raza">
+      <p class="field-error" data-err-for="res-name" role="alert" hidden></p>
+    </div>
+    <div class="field">
+      <label for="res-phone">Mobile number (Pakistan)</label>
+      <input type="tel" id="res-phone" autocomplete="tel" placeholder="03XX XXXXXXX" inputmode="tel">
+      <p class="field-error" data-err-for="res-phone" role="alert" hidden></p>
+    </div>
+    <div class="field field-full">
+      <label for="res-slot">Pickup time</label>
+      <select id="res-slot">
+        <option value="">Choose a pickup time…</option>
+        <option>Today, 1:00 PM</option>
+        <option>Today, 4:00 PM</option>
+        <option>Today, 7:00 PM</option>
+        <option>Tomorrow, 10:00 AM</option>
+        <option>Tomorrow, 1:00 PM</option>
+      </select>
+      <p class="field-error" data-err-for="res-slot" role="alert" hidden></p>
+    </div>
+    <div class="field-full">
+      <button class="btn btn-primary" type="submit">Confirm reservation</button>
+      <p class="fine" style="margin-top:.6rem">Demo only: the reservation is stored in this browser, no message is sent to a real store, and no payment is taken.</p>
+    </div>
+  </form>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-in">
+    <div><h3>Sehat Bazaar Pharmacy (Demo)</h3><p class="fine">A fictional pharmacy-style retail store. Catalogue, stock counts, prices and reviews are demo data.</p></div>
+    <div><h3>Explore</h3><p><a href="catalogue.html">Catalogue</a><br><a href="reserve.html">Reserve for pickup</a><br><a href="reservations.html">My Reservations</a><br><a href="store.html">Our Store</a></p></div>
+    <div><h3>Store</h3><p class="fine">Shop 4, Main Bazaar Road, Gujranwala<br>+92 300 123 4567<br>Demo clock: Sunday 22 Nov 2026, 11:30 AM PKT</p></div>
+  </div>
+  <div class="wrap footer-note">DEMO — built by Multi-Talented Services (MTS) as a portfolio piece for BalanceBit Solutions. No real orders, payments or deliveries take place.</div>
+</footer>
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

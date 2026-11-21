@@ -1,0 +1,42 @@
+# VISUAL QUALITY SCORECARD — VERDICT
+Build: Sehat Bazaar Pharmacy — Retail Store Website Demo (Queue #13) (client-facing owner: BalanceBit Solutions · production: MTS)
+Build type / builder: Business Website Build (AICOS-105 pattern) · Preview URL: local file build (served preview pending — main agent)
+Date of pass: 2026-11-21 · Scored by: AICOS-115 pattern · Pass #: 1
+
+ 1. Visual identity & originality   13 / 15   Evidence: Signoff-Pack.md filed (design direction, references actually used, full token table); desktop + phone captures read against it. Held 2 pts: AICOS-112 §0 sign-off RECORDING is an external act, not yet done.
+ 2. UI/UX & usability               14 / 15   Evidence: full flow run 19/19 (screenshots/flows/flow-log.txt) incl. error + empty states; the one conversion path (catalogue → product → basket → confirm) completed unaided in the rendered run. 1 pt margin held on judgement.
+ 3. Typography & composition        10 / 10   Evidence: Figtree pairing as specified in Signoff-Pack; hierarchy/spacing read in all 18 standard captures at 390/768/1440.
+ 4. Animation & interactions         9 / 10   Evidence: interaction inventory observed in captures + flows (filters, steppers, toasts, confirmation focus); Ken Burns hero disabled in the reduced-motion set (18 captures). 1 pt margin: a single restrained motion pattern by design.
+ 5. Responsive design                10 / 10   Evidence: 18 standard combos + 320px probe + nojs/reduced sets — 0 overflow / 0 leaf text-overflow / 0 broken images in every audit (screenshots/*/audit.json).
+ 6. Functionality                    15 / 15   Evidence: battery 141/141 (tests-output.log); rendered flow 19/19 with WhatsApp FIRING recorded in the local log (lesson 21), reservation RS-DEMO-5055 at PKR 1,980 exact, stock boundary pair in rendered content, cancel-restores-stock before/after captures.
+ 7. Performance                       6 / 10   Evidence: Performance-Pack.md — measured code 72,020 B, media 554,740 B / 7 photos (max 104,585 B). Held 4 pts: served-preview CWV (LCP/INP/CLS) is PENDING the main agent's GitHub Pages measurement; no numbers invented.
+ 8. Accessibility                     5 /  5   Evidence: 17 contrast assertions computed from hex in the battery (all ≥4.5:1, focus 6.29:1 ≥3:1); keyboard walk filed (screenshots/keyboard/keyboard-walk.md) — visible focus at every stop on catalogue filters, quantity stepper and reservation form; all controls native (lesson 34); primary targets ≥44px.
+ 9. SEO                               5 /  5   Evidence: unique title/meta per page (battery-asserted), semantic heading order, sitemap.xml + robots.txt, internal linking per IA, alt text on every image.
+10. Security                          4 /  5   Evidence: no secrets/credentials in source (battery-asserted), zero live endpoints, no external embeds, demo data only in localStorage; no packages installed (nothing to vet). 1 pt held: a localStorage demo has no server-side spam/abuse surface to audit — the control is absence, recorded honestly.
+
+TOTAL: 91 / 100   (target ≥ 90)
+
+BLOCKING FAILURES (security / data integrity / functionality):
+- None.
+
+UNTESTED AREAS (score invalid without evidence):
+- None build-side. Two EXTERNAL acts remain and are named, not scored around: (1) served-preview CWV measurement (Area 7, 4 pts held); (2) AICOS-112 §0 sign-off recording (Area 1, 2 pts held).
+
+VERDICT:  [ ] APPROVE   [X] REJECT   [ ] REJECT — BLOCKED   [ ] REJECT — INCOMPLETE
+Reasons: total 91 ≥ 90 with no blocking failure and no untested build-side area; the verdict stays REJECT under the owner's 100-bar standard until the two external acts above are recorded — the same position as Queues #11 and #12. No build defects outstanding.
+Next step: [X] To AICOS-025 release gate (with external acts named)   [ ] Back to Gate 5   [ ] Back to Gate 2
+
+## COMPONENT-CONSISTENCY PASS (done-gate — one line per page, read from rendered captures AFTER fixes + re-capture)
+- **index (home)** — PASS. One button system (filled-blue primary on search + all 4 featured cards; ghost role unused here by design), category tiles one anatomy, stock badges one pill in three semantic states, open-chip identical in header/hero/store strip, spacing rhythm consistent section to section. Read from index-phone.png + index-desktop.png.
+- **catalogue** — PASS. The same card component as home (verified side-by-side: eyebrow/name/pack/price+badge/full-width button); filter panel uses the one field system (search/select/checkbox all labelled, 52px); out-of-stock card (Omega-3) drops the button and prints the reason in the same slot — a state of the component, not a second component. Read from catalogue-phone.png + catalogue-desktop.png.
+- **product (detail, id=15 + flow id=3)** — PASS after fix. Stepper initially broke on phone (global field width beat the qty-input class — specificity, lesson 16); fixed, re-captured: label/−/input/+ now one row, input matches the field system, primary + WhatsApp-outline actions match catalogue button roles, error text in the one error colour. Read from product-phone.png (post-fix) + flows/flow-qty-boundary.png.
+- **reserve** — PASS after fixes. Basket steppers reuse the product-page stepper anatomy; form fields identical to catalogue filters (labels above, errors below in --error, live clearing proven in flow); confirmation initially left the form visible ([hidden] defeated by display:grid — fixed globally, re-captured clean) and the stale PKR 0 total row now hides with the empty state. Read from reserve-phone.png + flows/flow-confirmation.png (post-fix).
+- **reservations (My Reservations)** — PASS. Reservation cards reuse the badge pill for status (Reserved/Cancelled), totals in the same price treatment, cancel is the ghost button role used elsewhere; empty state matches the catalogue empty-state anatomy (dashed panel + link). Read from reservations-phone.png + flows/flow-my-reservations.png.
+- **store** — PASS. Hours table one system (today row in blue-soft with blue-dark text, AA-proven), info cards identical to home's store strip cards, map placeholder honestly labelled in the muted surface treatment, review cards one anatomy with stars in the single semantic amber. Read from store-phone.png + store-desktop.png.
+
+## Key evidence numbers
+- Tests: 141 PASS / 0 FAIL (tests-output.log) — incl. 17 contrast assertions from hex, stock threshold boundary in the data, quantity boundary pair, ref determinism, banned-wording absence (expiry/FEFO + medical-claim list), link integrity, weight budgets. One assertion amended + disclosed inline (search "vitamin" 3→4).
+- Flow run: 19/19 PASS (screenshots/flows/flow-log.txt) — empty state naming the constraint + reset; stock+1 rejected with named content; WhatsApp firing logged; bad-phone error content + live clear; confirmation **RS-DEMO-5055, PKR 1,980 exact**; stock 5 → 3 on reserve, 3 → 5 on cancel (before/after captures); basket stepper boundary named.
+- Captures: 18 standard + 1 probe320 + 18 nojs + 18 reduced + 10 flow + 3 keyboard = 68 PNGs; every audit 0 overflow / 0 leaf text-overflow / 0 broken images / 0 hidden sections.
+- Index captures (owner rule): screenshots/index-desktop.png = 1440×2575 · screenshots/index-phone.png = 390×5298 (full-page, measured).
+- Video: none — photo + CSS motion (generation region-blocked 403, not attempted).

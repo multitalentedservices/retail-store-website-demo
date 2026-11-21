@@ -1,0 +1,19 @@
+PASS  empty state visible for impossible search
+PASS  empty state NAMES the constraint (search "zzz-no-match") -> No products match search "zzz-no-match". Clear a filter or reset to see the full catalogue.
+PASS  reset restores full count -> Showing 18 of 18 products
+PASS  stock BEFORE reservation -> 5 on the shelf
+PASS  stock+1 (6 of 5) error CONTENT -> Only 5 in stock — quantity 6 is more than the shelf holds.
+PASS  valid qty clears the error live
+PASS  FIRING whatsapp log -> [{"product":"Vitamin D3 1000 IU Softgels","at":"Sunday 22 Nov 2026, 11:30 AM PKT","channel":"whatsapp"}]
+PASS  basket note -> 2 × Vitamin D3 1000 IU Softgels added to your pickup basket (2 items total). Continue to Reserve for pickup to confirm.
+PASS  basket total 2 x PKR 990 = PKR 1,980 -> PKR 1,980
+PASS  bad phone error CONTENT -> Enter a valid Pakistani mobile number: 03 followed by 9 more digits (11 digits total).
+PASS  valid phone clears error live
+PASS  confirmation ref -> RS-DEMO-5055
+PASS  confirmation exact total PKR 1,980
+PASS  confirmation states pay-at-pickup / no payment
+PASS  stock AFTER reservation -> 3 on the shelf (5 -> 3)
+PASS  My Reservations contains ref + total
+PASS  status after cancel -> Cancelled
+PASS  stock RESTORED after cancel -> 5 on the shelf (3 -> 5)
+PASS  basket step above stock rejected, constraint NAMED -> Only 2 in stock — quantity 3 is more than the shelf holds.
