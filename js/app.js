@@ -85,7 +85,8 @@
       '<p class="card-pack">' + p.pack + '</p>' +
       '<p class="card-row"><span class="price">' + L.formatPKR(p.price) + '</span>' + stockBadge(p) + '</p>' +
       (out
-        ? '<p class="card-note">Out of stock — reserving is disabled for this item.</p>'
+        ? '<p class="card-note">Out of stock — reserving is disabled for this item.</p>' +
+          '<button class="btn btn-primary btn-block" type="button" disabled aria-disabled="true">Reserve for pickup</button>'
         : '<button class="btn btn-primary btn-block" type="button" data-add="' + p.id + '">Reserve for pickup</button>') +
       '</div></article>';
   }
@@ -194,7 +195,7 @@
           '<div class="detail-actions"><button class="btn btn-primary" type="button" data-reserve>Add to pickup basket</button>' +
           '<a class="btn btn-wa" data-wa="' + p.name + '" href="' + L.whatsappLink(p) + '" target="_blank" rel="noopener">Ask on WhatsApp</a></div>' +
           '<p class="fine" data-basket-note role="status"></p>') +
-      (out ? '<div class="detail-actions"><a class="btn btn-wa" data-wa="' + p.name + '" href="' + L.whatsappLink(p) + '" target="_blank" rel="noopener">Ask on WhatsApp</a></div>' : '') +
+      (out ? '<div class="detail-actions"><button class="btn btn-primary" type="button" disabled aria-disabled="true">Add to pickup basket</button><a class="btn btn-wa" data-wa="' + p.name + '" href="' + L.whatsappLink(p) + '" target="_blank" rel="noopener">Ask on WhatsApp</a></div>' : '') +
       '<p class="fine">' + L.STORE.prescriptionNote + '</p>' +
       '</div></div>';
     var rel = $('[data-related]');

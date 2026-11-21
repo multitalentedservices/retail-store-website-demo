@@ -9,6 +9,7 @@
   --warn:#92400E; --warn-bg:#FEF3C7;
   --out:#991B1B; --out-bg:#FEE2E2;
   --error:#B91C1C;
+  --disabled-bg:#E2E8F0; --disabled-text:#44597A;
   --radius:14px;
   --font:"Figtree","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
 }
@@ -58,7 +59,14 @@ p{margin:0 0 .9rem}
 .btn-wa:hover{background:var(--blue-soft)}
 .btn-block{width:100%}
 .btn-sm{min-height:44px;padding:.4rem .8rem;font-size:.92rem}
-.btn[disabled]{opacity:.55;cursor:not-allowed}
+/* disabled STATE of the one button system: same size/radius/height, muted
+   grey ground + muted text instead of royal blue, not-allowed cursor.
+   Solid colours (no opacity fade) so the label stays readable:
+   #44597A on #E2E8F0 = 5.76:1. Hover must not revive the active colours. */
+.btn[disabled],.btn:disabled{background:var(--disabled-bg);color:var(--disabled-text);
+  border-color:var(--line);cursor:not-allowed;opacity:1}
+.btn[disabled]:hover,.btn:disabled:hover{background:var(--disabled-bg);color:var(--disabled-text);
+  border-color:var(--line)}
 
 /* fields — ONE system */
 label{font-weight:600;display:block;margin-bottom:.35rem}
