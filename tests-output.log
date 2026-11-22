@@ -128,7 +128,7 @@ PASS  no lorem ipsum
 PASS  no live analytics endpoints
 PASS  no external scripts besides Google Fonts CSS
 PASS  link integrity: all local targets exist
-PASS  code weight < 400 KB (76876 B)
+PASS  code weight < 400 KB (89077 B)
 PASS  image cat-baby.jpg <= 120 KB (61180 B)
 PASS  image cat-devices.jpg <= 120 KB (70594 B)
 PASS  image cat-firstaid.jpg <= 120 KB (73017 B)

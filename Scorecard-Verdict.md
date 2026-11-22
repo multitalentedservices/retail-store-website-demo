@@ -81,3 +81,81 @@ sign-off still outstanding; defect repairs do not manufacture them.
 Push of the changed text files (css/style.css, js/app.js, all 6 HTML pages,
 Scorecard-Verdict.md, tests-output.log) is pending the GitHub connector's approval card —
 see FIX-REPORT-ROUND2.md.
+
+## Addendum — Premium Upgrade (2026-11-22, Ladder #13)
+
+Premium layer added per Premium-Standard-and-Library-Plan §5 #13: the care-journey
+layer (Hims/Capsule patterns, inside the standing no-medical-claims rule), Swiper
+category rails, and trust design upgraded — with **no invented people, licences or
+claims**. Existing battery **141 PASS / 0 FAIL, unamended**, before and after; original
+flow suite **19/19** after; new `premium-checks.js` **38 PASS / 0 FAIL**.
+
+What was added:
+- **Care journey (new technique: route → review → reserve as one designed flow)** —
+  home gains a 3-step journey module: step 1 routes by need ("what do you need?"
+  chips, incl. a not-sure → counter route), step 2 reviews the chosen shelf from the
+  ONE data object (product count + first names/prices — deliberately **no stock
+  numbers**, so the logic-owned counter cannot drift), step 3 reserves via the
+  existing catalogue flow. Proven end-to-end in premium-checks.
+- **Refill & regulars module (demo, honestly labelled)** — register a regular item +
+  reminder rhythm; validated by the site's own validators, stored only in this
+  browser (`sb_refills`), confirmation summarises and routes to reserve-for-pickup.
+  No medical claims; the prescription honesty line is carried inside the module.
+- **Swiper category rail** — the category tiles become a Swiper 14.4.0 rail on the
+  home page (keyboard enabled, pagination, designed nav buttons in the site's
+  system); the plain tiles grid is the no-JS/static state.
+- **Trust design** — store page gains "At the counter — our honesty lines, in
+  writing": the prescription line, the pay-at-pickup line and the counter contact
+  as designed elements. **Deviation, recorded:** §5's "named pharmacist block"
+  could not be built as named — no pharmacist name and no licence number exist
+  anywhere in this site's existing content, and P10 forbids inventing them. The
+  block is built from the site's existing honesty lines only.
+- Display hero type (clamp to 3.3rem), micro-interactions on the one button/card
+  system, CSS View Transitions (0 KB), reveal-on-scroll with an anti-blank
+  failsafe (first capture caught mid-transition blanks on the refill section;
+  fixed by arm-below-fold + sweep + 1.6s force-reveal, re-shot and re-read).
+
+P1–P10 evidence:
+- **P1 PASS** — the main agent's Retail rule set (`a{color:var(--blue);
+  text-decoration:none}` + designed hover underlines on section-head/footer/
+  hero-meta) preserved **verbatim**; CSS additions are appended only.
+  Premium-checks link audit: 0 offenders on all 6 pages × 390/1440.
+- **P2 NOT APPLIED (by §5 design)** — Lenis is not assigned to Retail in the plan;
+  native scroll + CSS smooth anchors retained. Not claimed as a pass.
+- **P3 PARTIAL** — one signature moment: the journey flow sequence (stateful
+  steps, 650ms reveals, 75ms stagger, fire-once). Delivered via platform CSS/IO
+  per §4.1's platform-first rule; Retail carries no GSAP scene (§5 assigns the
+  GSAP rungs to other sites). Recorded as partial, not dressed up as a GSAP pass.
+- **P4 PASS** — hero statement at display scale for a utility register
+  (clamp(2.1rem, 4.6vw, 3.3rem), lh 1.05, tracking −0.02em).
+- **P5 PASS** — real shelf photography hero (Ken Burns retained); the rail is
+  category navigation, not a generic hero slider.
+- **P6 PASS** — two depth modules beyond forms (journey routing; refill/regulars
+  with validation + persistence), on top of the proven reserve logic.
+- **P7 PASS** — hover/focus-visible/active states across buttons, cards, chips,
+  rail nav; View Transitions where supported, graceful without.
+- **P8 PASS (JS, measured)** — plain pages **11,229 B gzip** (≤20 KB); index
+  **58,752 B gzip** (≤90 KB) — logic + app + premium + Swiper 44,390 (totals as
+  measured by premium-checks; per-file CLI weighing differs by a few bytes by
+  method). Served-preview CWV remains the external pending item — not claimed.
+- **P9 PASS** — reduced-motion honoured (reveals static-complete, Ken Burns off);
+  chips/steppers are native buttons; Swiper keyboard mode on; the battery's 17
+  contrast assertions unchanged and green.
+- **P10 PASS** — DEMO labelling intact; refill module labelled demo at every
+  surface; banned-wording assertions (expiry/FEFO + medical-claim list) green;
+  the one §5 item that would have required invention was rebuilt from existing
+  content instead (above).
+
+Captures: all 18 standard combos + nojs (18) + reduced (18) + probe320 re-shot —
+every audit **0 overflow / 0 text-overflow / 0 broken images**; index-desktop
+1440×3988, index-phone 390×7232 staged fresh; `screenshots/signature-moment.png`
+= the journey mid-flow (Baby & Mother Care route selected, review filled, reserve
+CTA re-pointed), read by eye.
+
+RE-SCORE: Area 2 UI/UX 14→15 (journey + refill depth on the one conversion path) ·
+Area 4 Animation & interactions 9→10 (Swiper rail, journey state motion, reveals,
+micro-interactions — no longer a single motion pattern). All other areas unchanged
+(Area 1 still holds 2 pts for the external AICOS-112 §0 recording; Area 7 still
+holds 4 pts for served-preview CWV).
+**TOTAL: 91 → 93 / 100 — verdict stays REJECT under the owner's 100-bar** until the
+two external acts are recorded. No build defects outstanding.

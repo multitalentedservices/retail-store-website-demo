@@ -6,10 +6,11 @@
 <title>Sehat Bazaar Pharmacy — Neighbourhood Pharmacy Catalogue (Demo)</title>
 <meta name="description" content="Demo catalogue for the fictional Sehat Bazaar Pharmacy in Gujranwala: browse wellness, personal-care, first-aid, baby-care and device products, check live shelf stock, and reserve for pickup. Pay at pickup.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -48,6 +49,39 @@
     </div>
   </section>
 
+  <section class="section journey-sec">
+    <div class="wrap">
+      <div class="section-head"><h2>Your care journey, in three steps</h2><span class="fine">Route → review → reserve — one flow, demo data only.</span></div>
+      <div class="journey" data-journey>
+        <div class="jstep is-active" data-jstep="1" data-reveal>
+          <span class="step-num">1</span>
+          <h3>Route — what do you need?</h3>
+          <p>Tell us the shelf, not the product name. Pick the closest match and the next step fills itself in.</p>
+          <div class="chips" role="group" aria-label="What do you need?">
+            <button class="chip" type="button" data-route="vitamins" aria-pressed="false">Vitamins &amp; supplements</button>
+            <button class="chip" type="button" data-route="personal" aria-pressed="false">Personal care</button>
+            <button class="chip" type="button" data-route="firstaid" aria-pressed="false">First aid</button>
+            <button class="chip" type="button" data-route="baby" aria-pressed="false">Baby &amp; mother care</button>
+            <button class="chip" type="button" data-route="devices" aria-pressed="false">A health device</button>
+            <button class="chip" type="button" data-route="counter" aria-pressed="false">Not sure — ask the counter</button>
+          </div>
+        </div>
+        <div class="jstep" data-jstep="2" data-reveal>
+          <span class="step-num">2</span>
+          <h3>Review — what is on that shelf</h3>
+          <p data-journey-review>Choose a shelf in step 1 and this step shows what sits on it: how many products, and the first names and prices to look for. Shelf counts and prices come from the same catalogue data as the rest of the site.</p>
+          <p class="fine" data-journey-review-note></p>
+        </div>
+        <div class="jstep" data-jstep="3" data-reveal>
+          <span class="step-num">3</span>
+          <h3>Reserve — ready at the counter</h3>
+          <p>Reserve from the catalogue, pick a pickup time, and pay at the counter when you collect. Pay at pickup — this demo takes no payment.</p>
+          <p style="margin:0"><a class="btn btn-primary" data-journey-reserve href="catalogue.html">Browse the catalogue &amp; reserve</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="section-head"><h2>Shop by category</h2><a href="catalogue.html">See the full catalogue</a></div>
@@ -73,7 +107,64 @@
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section section-alt" id="refills">
+    <div class="wrap">
+      <div class="section-head"><h2>Regular items, kept ready</h2><span class="fine">Refill &amp; regulars list — demo module</span></div>
+      <div class="refill-grid">
+        <div data-reveal>
+          <p>Some items come home again and again — the same vitamins, the same baby wipes, the same hand wash. Register a regular item here and this demo keeps your list in this browser, so the pattern a real counter would follow is visible end to end: register → reminder rhythm → reserve for pickup.</p>
+          <p class="fine">Demo only: the list is stored only in this browser (localStorage), nothing is sent anywhere, and no item is supplied through this website. Prescription medicines are dispensed in-store only against a valid prescription and are not sold through this demo website.</p>
+        </div>
+        <form class="refill-form" data-refill-form novalidate data-reveal>
+          <div class="field">
+            <label for="rf-name">Your full name</label>
+            <input type="text" id="rf-name" autocomplete="name" placeholder="For example, Ahmed Raza">
+            <p class="field-error" data-err-for="rf-name" hidden></p>
+          </div>
+          <div class="field">
+            <label for="rf-phone">Mobile number</label>
+            <input type="tel" id="rf-phone" autocomplete="tel" placeholder="03XX XXXXXXX">
+            <p class="field-error" data-err-for="rf-phone" hidden></p>
+          </div>
+          <div class="field">
+            <label for="rf-product">Regular item</label>
+            <select id="rf-product">
+              <option value="">Choose an item…</option>
+              <option value="1">Daily Multivitamin Tablets — 30 tablets</option>
+              <option value="2">Vitamin C 500 mg Chewable Tablets — 20 tablets</option>
+              <option value="3">Vitamin D3 1000 IU Softgels — 30 softgels</option>
+              <option value="5">Gentle Moisturising Lotion — 200 ml bottle</option>
+              <option value="6">Herbal Shampoo — Aloe &amp; Amla — 340 ml bottle</option>
+              <option value="7">Fluoride Toothpaste — Fresh Mint — 150 g tube</option>
+              <option value="8">Antibacterial Hand Wash — 250 ml pump</option>
+              <option value="9">Adhesive Bandages — Assorted — Box of 40</option>
+              <option value="10">Antiseptic Liquid — 250 ml bottle</option>
+              <option value="13">Baby Wipes — Fragrance-Free — Pack of 72</option>
+              <option value="14">Gentle Baby Wash — 200 ml bottle</option>
+              <option value="16">Digital Thermometer — 1 unit</option>
+            </select>
+            <p class="field-error" data-err-for="rf-product" hidden></p>
+          </div>
+          <div class="field">
+            <label for="rf-cycle">Reminder rhythm</label>
+            <select id="rf-cycle">
+              <option value="">Choose a rhythm…</option>
+              <option value="Every 2 weeks">Every 2 weeks</option>
+              <option value="Every month">Every month</option>
+              <option value="Every 2 months">Every 2 months</option>
+            </select>
+            <p class="field-error" data-err-for="rf-cycle" hidden></p>
+          </div>
+          <label class="checkline"><input type="checkbox" id="rf-consent"> I understand this is a demo list stored only in this browser.</label>
+          <p class="field-error" data-err-for="rf-consent" hidden></p>
+          <button class="btn btn-primary btn-block" type="submit">Add to my regulars list (demo)</button>
+        </form>
+        <div class="confirm refill-confirm" data-refill-confirm hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap">
       <div class="section-head"><h2>Visit the store</h2><a href="store.html">Hours, address &amp; reviews</a></div>
       <div class="info-grid">
@@ -95,5 +186,7 @@
 </footer>
 <script src="js/logic.js"></script>
 <script src="js/app.js"></script>
+<script defer src="assets/vendor/swiper-bundle.min.js"></script>
+<script defer src="js/premium.js"></script>
 </body>
 </html>
