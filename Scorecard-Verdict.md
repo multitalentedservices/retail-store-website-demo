@@ -41,3 +41,43 @@ Next step: [X] To AICOS-025 release gate (with external acts named)   [ ] Back t
 - Captures: 18 standard + 1 probe320 + 18 nojs + 18 reduced + 10 flow + 3 keyboard = 68 PNGs; every audit 0 overflow / 0 leaf text-overflow / 0 broken images / 0 hidden sections.
 - Index captures (owner rule): screenshots/index-desktop.png = 1440×2575 · screenshots/index-phone.png = 390×5298 (full-page, measured).
 - Video: none — photo + CSS motion (generation region-blocked 403, not attempted).
+
+## Addendum — Round-2 Re-verification FIX RUN (2026-11-22)
+
+Independent round-2 re-verification (`Reverification-2026-11-21/round2/REPORT.md`) found 2 visible
++ 1 minor defect on this site. All three FIXED, re-shot and read; battery **141 PASS / 0 FAIL**
+unamended after fixes:
+
+- **RS-1 (visible) — Product page content flush at left=0 on phone.** Root cause is the
+  shorthand trap in its purest form: `<main class="wrap section">` and `.section{padding:2.4rem 0}`
+  zeroed the wrap's inline padding, so the single-column phone layout lost the inset every
+  other page kept. Fix: `.section` now uses `padding-block`. The same trap was found and
+  fixed in the two other wrap-sharing containers on this site — `.hero-in` (hero content was
+  also flush on phone) and `.footer-in` — both now `padding-block`. Proof: DOM insets at
+  390px — product H1 / price / description / related heading all at left=20 (were 0); desktop
+  unchanged (detail column 736, container 150); product-phone.png read by eye.
+- **RS-2 (visible) — No mobile menu; nav wrapped to 3 rows, header 262px on every page.**
+  Fix (round-1 Clinic pattern in Retail's own system): all 6 pages gain a `.nav-toggle`
+  "Menu" button (9px-radius outline button matching the nav links) and `id="main-nav"`,
+  wired in `js/app.js` paintChrome (aria-expanded, closes on link click and Escape); the
+  header inset is restored (`.header-in` padding shorthand → `padding-block`), and at ≤768px
+  logo + open-chip + Menu share one row while the nav collapses to a full-width stacked
+  list. Restoring the inset narrowed the desktop row by 40px and wrapped the nav at 1440px,
+  so header gaps and nav-link padding were tightened (gap .8rem, padding-inline .6rem) —
+  desktop is back to exactly one 72px row. Proof: DOM geometry — closed header **122px at
+  390 (was 262)**, 74px at 768, logo left=20 at ≤768, toggle opens all 5 links with 0
+  overflow (`round2/fix2-retail-store/menu-open-phone.png`); re-shoot combos 0 problems.
+- **RS-3 (minor) — 1px horizontal overflow on index@390 only.** Root cause found by
+  animation-phase sampling: the hero photo's kenburns scale animation (14s alternate) is
+  not clipped by any container, so its transformed box repeatedly crossed the right edge —
+  sampled document overflow up to 5px across the cycle (round-2 caught 1px at its sampling
+  moment). Fix (the round-1 RE-2 pattern): `.hero{overflow:hidden}` clips the animation at
+  the section boundary; the hero-in padding-block fix above also returns the image cell to
+  the container width. Proof: 6-second sampling across the full kenburns cycle — max
+  overflow **0**, no offenders.
+
+Score unchanged: **91/100 — REJECT (evidence bar only)** — served-preview CWV + AICOS-112 §0
+sign-off still outstanding; defect repairs do not manufacture them.
+Push of the changed text files (css/style.css, js/app.js, all 6 HTML pages,
+Scorecard-Verdict.md, tests-output.log) is pending the GitHub connector's approval card —
+see FIX-REPORT-ROUND2.md.

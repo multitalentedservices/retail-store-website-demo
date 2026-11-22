@@ -34,7 +34,7 @@ p{margin:0 0 .9rem}
 /* demo banner + header */
 .demo-banner{background:var(--blue-dark);color:#fff;text-align:center;padding:.45rem 1rem;font-size:.92rem;font-weight:600}
 .site-header{border-bottom:1px solid var(--line);background:#fff}
-.header-in{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;padding:.85rem 0}
+.header-in{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;padding-block:.85rem}
 .logo{font-size:1.35rem;font-weight:800;color:var(--ink);text-decoration:none;line-height:1.1}
 .logo span{color:var(--blue)}
 .logo small{display:block;font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
@@ -46,6 +46,22 @@ p{margin:0 0 .9rem}
 .open-chip{font-size:.9rem;font-weight:700;padding:.4rem .75rem;border-radius:999px;background:var(--surface);color:var(--ink)}
 .open-chip.is-open{background:var(--ok-bg);color:var(--ok)}
 .open-chip.is-closed{background:var(--out-bg);color:var(--out)}
+.nav-toggle{display:none;align-items:center;gap:.45rem;min-height:44px;padding:.55rem .9rem;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+/* With the wrap's inline padding restored (padding-block fix above), the desktop
+   header row needs its ~40px back: gaps and nav-link padding are tightened so
+   logo + open-chip + nav stay on one row at 1440px as originally built. */
+.header-in{gap:.8rem}
+.main-nav a{padding-inline:.6rem}
+.nav-toggle svg{flex:none}
+/* Round-2 fix (RS-2): real mobile menu at <=768px — logo + open-chip + Menu button
+   on one row; the nav collapses into a full-width stacked list in the site's own system. */
+@media (max-width:768px){
+  .nav-toggle{display:inline-flex;margin-left:auto}
+  .logo{flex:none}
+  .main-nav{display:none}
+  .main-nav.open{display:flex;flex-direction:column;align-items:stretch;flex-wrap:nowrap;order:4;flex-basis:100%;margin-left:0;gap:.15rem}
+  .main-nav.open a{justify-content:flex-start}
+}
 
 /* buttons — ONE system */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;font:inherit;font-weight:700;
@@ -79,8 +95,8 @@ input:focus,select:focus{border-color:var(--blue);outline:3px solid var(--blue-s
 .checkline input{width:22px;height:22px;accent-color:var(--blue);flex:none}
 
 /* hero */
-.hero{background:var(--surface-2);border-bottom:1px solid var(--line)}
-.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding:2.4rem 0}
+.hero{background:var(--surface-2);border-bottom:1px solid var(--line);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding-block:2.4rem}
 .hero p.lede{font-size:1.13rem;color:var(--muted);max-width:34rem}
 .hero img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
 .hero-search{display:flex;gap:.6rem;margin:1.2rem 0 .8rem}
@@ -88,7 +104,7 @@ input:focus,select:focus{border-color:var(--blue);outline:3px solid var(--blue-s
 .hero-meta{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
 
 /* sections */
-.section{padding:2.4rem 0}
+.section{padding-block:2.4rem}
 .section-alt{background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .section-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem}
 .section-head a{font-weight:700}
@@ -185,7 +201,7 @@ table.hours tr.today th,table.hours tr.today td{background:var(--blue-soft);font
 
 /* footer */
 .site-footer{background:var(--surface-2);border-top:1px solid var(--line);margin-top:2.5rem}
-.footer-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding:2rem 0}
+.footer-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding-block:2rem}
 .site-footer a{font-weight:600}
 .footer-note{border-top:1px solid var(--line);padding:1rem 0;font-size:.9rem;color:var(--muted)}
 
@@ -201,7 +217,7 @@ table.hours tr.today th,table.hours tr.today td{background:var(--blue-soft);font
   .filters{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  .hero-in{grid-template-columns:1fr;padding:1.6rem 0}
+  .hero-in{grid-template-columns:1fr;padding-block:1.6rem}
   .grid{grid-template-columns:repeat(2,1fr)}
   .tiles{grid-template-columns:repeat(2,1fr)}
   .steps,.info-grid,.reviews,.footer-in{grid-template-columns:1fr}
